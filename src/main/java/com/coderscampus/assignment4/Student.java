@@ -1,7 +1,5 @@
 package com.coderscampus.assignment4;
 
-
-
 public class Student {
     private String id;
     private String name;
@@ -13,6 +11,16 @@ public class Student {
         this.name = name;
         this.course = course;
         this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", course='" + course + '\'' +
+                ", grade=" + grade +
+                '}';
     }
 
     public String getId() {
@@ -29,5 +37,21 @@ public class Student {
 
     public int getGrade() {
         return grade;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 }

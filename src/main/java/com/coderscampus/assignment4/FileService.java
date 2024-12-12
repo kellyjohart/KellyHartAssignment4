@@ -1,63 +1,42 @@
 package com.coderscampus.assignment4;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.chrono.MinguoDate;
 
 
 public class FileService {
 
-    private Student[] course1 = new Student[100];
-    private Student[] course2 = new Student[100];
-    private Student[] course3 = new Student[100];
 
-    public void readStudentsFromFile(String fileName) {
+    public Student[] readStudentsFromFile(String fileName) {
+        Student[] masterList = new Student[100];
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             reader.readLine();
-            int Counter = 0;
+            int counter = 0;
             while ((line = reader.readLine()) != null) {
                 String[] studentArray = line.split(",");
                 Student student = new Student(studentArray[0], studentArray[1], studentArray[2], Integer.parseInt(studentArray[3]));
-                String course = student.getCourse();
-                if (course.startsWith("COMPSCI")) {
-                    course1[Counter] = student;
-                } else if (course.startsWith("APMTH")) {
-                    course2[Counter] = student;
-                } else if (course.startsWith("STAT")) {
-                    course3[Counter] = student;
-                }
-                Counter++;
+                masterList[counter++] = student;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error reading from file " + fileName + ": " + e.getMessage());
         }
-
+        return masterList;
     }
 
     public void writeStudentsToFile(String fileName, Student[] students) {
-        try (FileWriter writer = new FileWriter(fileName)) {
-            writer.write("Student ID,Student Name,Course,Grade\n");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            bw.write("Student ID,Student Name,Course,Grade\n"); // Header
             for (Student student : students) {
-                writer.write(student.getId() + "," + student.getName() + "," + student.getCourse() + "," + student.getGrade() + "\n");
+                if (student == null) {
+                    continue;
+                }
+                bw.write(student.getId() + "," + student.getName() + "," + student.getCourse() + "," + student.getGrade() + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error writing to file " + fileName + ": " + e.getMessage());
         }
     }
 
-
-    public Student[] getCourse1() {
-        return course1;
-    }
-
-    public Student[] getCourse2() {
-        return course2;
-    }
-
-    public Student[] getCourse3() {
-        return course3;
-    }
 
 }
