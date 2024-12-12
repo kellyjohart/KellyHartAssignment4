@@ -9,11 +9,9 @@ public class StudentService {
 
         int counter = 0;
         for (Student student : masterList) {
-           // System.out.println("Student: " + student);
             if (student != null && student.getCourse().startsWith(course)) {
                 counter++;
             }
-           // System.out.println("Counter: " + counter);
         }
 
         Student[] students = new Student[counter];

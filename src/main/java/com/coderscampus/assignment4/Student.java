@@ -13,16 +13,6 @@ public class Student {
         this.grade = grade;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", course='" + course + '\'' +
-                ", grade=" + grade +
-                '}';
-    }
-
     public String getId() {
         return id;
     }
