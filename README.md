@@ -17,17 +17,3 @@ This Java-based project is designed to manage and process student enrollment dat
 - **Java I/O (BufferedReader, BufferedWriter)** – For reading from and writing to files. 📖🖊️
 - **Comparator** – For sorting student records based on grade and course. 🧮
 
-## Project Structure 📂
-
-src
- └── main
-      └── java
-           └── com
-                └── coderscampus
-                     └── assignment4
-                          ├── FileService.java
-                          ├── Student.java
-                          ├── StudentEnrollmentApp.java
-                          └── StudentService.java
- └── resources
-      └── student-master-list.csv
